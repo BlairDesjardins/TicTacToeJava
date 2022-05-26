@@ -19,9 +19,9 @@ public class LoginController
     
     public Handler loginuser = (context) ->
     {
-        int id;
-        id = Integer.parseInt(context.pathParam("id"));
-        LoginPage l = ls.login(id);
+        String username;
+        username = context.pathParam("username");
+        LoginPage l = ls.login(username);
         context.result(gson.toJson(l));
     };
 

@@ -31,7 +31,7 @@ public class App
         LoginController lc = new LoginController(ls);
 
         app.get("/", new HelloHandler());
-        app.get("/login/:id", lc.loginuser);
+        app.get("/login/:username", lc.loginuser);
 
 
         UserRepo ur = new UserRepoImpl();
@@ -41,6 +41,9 @@ public class App
         app.get("/users", uc.getAllUsers);
         app.get("/users/:id", uc.getUser);
         app.post("/users", uc.regUser);
+        app.put("/users/wins", uc.updateWins);
+        app.put("/users/lose", uc.updateLosses);
+
 
 //        app.routes(() ->
 //        {

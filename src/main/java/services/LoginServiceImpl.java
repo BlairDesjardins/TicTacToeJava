@@ -14,8 +14,8 @@ public class LoginServiceImpl implements LoginService
         this.lr = lr;
     }
     @Override
-    public LoginPage login(int id)
+    public LoginPage login(String username)
     {
-        return lr.login(id);
+        return lr.login(username);
     }
 }

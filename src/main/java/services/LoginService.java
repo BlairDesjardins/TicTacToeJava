@@ -4,5 +4,5 @@ import models.LoginPage;
 
 public interface LoginService
 {
-    public LoginPage login(int id);
+    public LoginPage login(String username);
 }

@@ -40,6 +40,20 @@ public class UserController
         context.result(gson.toJson(u));
     };
 
+    public Handler updateWins = (context) ->
+    {
+        Users u = gson.fromJson(context.body(), Users.class);
+        u = us.updateWins(u);
+        context.result(gson.toJson(u));
+    };
+
+    public Handler updateLosses = (context) ->
+    {
+        Users u =gson.fromJson(context.body(), Users.class);
+        u = us.updateLosses(u);
+        context.result(gson.toJson(u));
+    };
+
     public void anotherHandle(Context ctx)
     {
         ctx.result("Another example");

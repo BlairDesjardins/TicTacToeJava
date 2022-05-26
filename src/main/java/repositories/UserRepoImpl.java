@@ -82,6 +82,53 @@ public class UserRepoImpl implements UserRepo
         return null;
     }
 
+    @Override
+    public Users updateWins(Users u)
+    {
+        try
+        {
+            String sql = "Update users set wins=? where username=? returning *";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1,u.getWins());
+            ps.setString(2, u.getUsername());
+
+            ResultSet rs = ps.executeQuery();
+            if(rs.next())
+            {
+                return buildUser(rs);
+            }
+        }
+        catch(SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public Users updateLosses(Users u)
+    {
+        try
+        {
+            String sql = "Update users set losses=? where username=? returning *";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, u.getLosses());
+            ps.setString(2, u.getUsername());
+
+            ResultSet rs = ps.executeQuery();
+
+            if(rs.next())
+            {
+                return buildUser(rs);
+            }
+        }
+        catch(SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     private Users buildUser(ResultSet rs1) throws SQLException
     {
         Users u = new Users();

@@ -15,13 +15,13 @@ public class LoginRepoImpl implements LoginRepo
     public static Connection conn = JDBCConnection.getConnection();
 
     @Override
-    public LoginPage login(int id)
+    public LoginPage login(String username)
     {
-        String sql = "Select username, password from users where u_id = ?";
+        String sql = "Select username, password from users where username = ?";
 
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, id);
+            ps.setString(1, username);
 
             ResultSet rs = ps.executeQuery();
 
@@ -39,8 +39,8 @@ public class LoginRepoImpl implements LoginRepo
     private LoginPage logindetails(ResultSet rs) throws SQLException
     {
         LoginPage lp = new LoginPage();
-        lp.login_details(rs.getString("username"));
-        lp.login_details(rs.getString("password"));
+        lp.setUsername(rs.getString("username"));
+        lp.setPassword(rs.getString("password"));
         return lp;
     }
 }

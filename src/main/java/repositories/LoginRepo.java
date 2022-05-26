@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface LoginRepo
 {
-    public LoginPage login(int id);
+    public LoginPage login(String username);
 }

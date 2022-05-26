@@ -10,4 +10,8 @@ public interface UserService
     public List<Users> getAllUsers();
 
     public Users regUser(Users u);
+
+    public Users updateWins(Users u);
+
+    public Users updateLosses(Users u);
 }

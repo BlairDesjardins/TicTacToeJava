@@ -29,4 +29,15 @@ public class UserServiceImpl implements UserService
     {
         return ur.regUser(u);
     }
+
+    @Override
+    public Users updateWins(Users u)
+    {
+        return ur.updateWins(u);
+    }
+
+    @Override
+    public Users updateLosses(Users u) {
+        return ur.updateLosses(u);
+    }
 }
