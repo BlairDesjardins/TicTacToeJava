@@ -1,6 +1,7 @@
 package services;
 
 import models.LoginPage;
+import models.Users;
 import repositories.LoginRepo;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public class LoginServiceImpl implements LoginService
         this.lr = lr;
     }
     @Override
-    public LoginPage login(String username)
+    public Users login(String username)
     {
         return lr.login(username);
     }

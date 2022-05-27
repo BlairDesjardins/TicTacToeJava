@@ -1,5 +1,6 @@
 package repositories;
 import models.LoginPage;
+import models.Users;
 import util.JDBCConnection;
 
 import java.util.ArrayList;
@@ -15,9 +16,9 @@ public class LoginRepoImpl implements LoginRepo
     public static Connection conn = JDBCConnection.getConnection();
 
     @Override
-    public LoginPage login(String username)
+    public Users login(String username)
     {
-        String sql = "Select username, password from users where username = ?";
+        String sql = "Select * from users where username = ?";
 
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -36,11 +37,15 @@ public class LoginRepoImpl implements LoginRepo
         return null;
     }
 
-    private LoginPage logindetails(ResultSet rs) throws SQLException
+    private Users logindetails(ResultSet rs) throws SQLException
     {
-        LoginPage lp = new LoginPage();
-        lp.setUsername(rs.getString("username"));
-        lp.setPassword(rs.getString("password"));
-        return lp;
+        Users user = new Users();
+        user.setU_id(rs.getInt("u_id"));
+        user.setUsername(rs.getString("username"));
+        user.setPassword(rs.getString("password"));
+        user.setWins(rs.getInt("wins"));
+        user.setLosses(rs.getInt("losses"));
+        user.setProfile_pic(rs.getString("profile_pic"));
+        return user;
     }
 }

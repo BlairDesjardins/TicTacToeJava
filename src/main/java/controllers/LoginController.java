@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import models.LoginPage;
 import io.javalin.http.Handler;
 import io.javalin.http.Context;
+import models.Users;
 import services.LoginService;
 
 
@@ -21,7 +22,7 @@ public class LoginController
     {
         String username;
         username = context.pathParam("username");
-        LoginPage l = ls.login(username);
+        Users l = ls.login(username);
         context.result(gson.toJson(l));
     };
 

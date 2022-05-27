@@ -1,8 +1,9 @@
 package services;
 
 import models.LoginPage;
+import models.Users;
 
 public interface LoginService
 {
-    public LoginPage login(String username);
+    public Users login(String username);
 }

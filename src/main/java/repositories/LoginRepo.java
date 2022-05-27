@@ -1,8 +1,10 @@
 package repositories;
 import models.LoginPage;
+import models.Users;
+
 import java.util.List;
 
 public interface LoginRepo
 {
-    public LoginPage login(String username);
+    public Users login(String username);
 }
