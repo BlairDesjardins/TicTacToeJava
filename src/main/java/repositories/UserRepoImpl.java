@@ -60,14 +60,13 @@ public class UserRepoImpl implements UserRepo
     @Override
     public Users regUser(Users u)
     {
-        String sql = "Insert into users values (?,?,?,null, null,?) returning *";
+        String sql = "Insert into users values (DEFAULT,?,?,null, null,?) returning *";
         try
         {
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, u.getU_id());
-            ps.setString(2, u.getUsername());
-            ps.setString(3, u.getPassword());
-            ps.setString(4, u.getProfile_pic());
+            ps.setString(1, u.getUsername());
+            ps.setString(2, u.getPassword());
+            ps.setString(3, u.getProfile_pic());
 
             ResultSet rs = ps.executeQuery();
             if(rs.next())
@@ -123,6 +122,26 @@ public class UserRepoImpl implements UserRepo
             }
         }
         catch(SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public Users deleteUser(int id) {
+        String sql = "delete from users where u_id = ? returning *";
+        try
+        {
+            PreparedStatement ps1 = conn.prepareStatement(sql);
+            ps1.setInt(1,id);
+            ResultSet rs1 = ps1.executeQuery();
+            if(rs1.next())
+            {
+                return buildUser(rs1);
+            }
+        }
+        catch (SQLException e)
         {
             e.printStackTrace();
         }

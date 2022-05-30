@@ -1,4 +1,4 @@
-package app;
+package repositories.app;
 
 import controllers.LoginController;
 import controllers.UserController;
@@ -12,7 +12,6 @@ import services.LoginServiceImpl;
 import services.UserService;
 import services.UserServiceImpl;
 
-import static io.javalin.apibuilder.ApiBuilder.path;
 import static javax.swing.UIManager.get;
 
 public class App

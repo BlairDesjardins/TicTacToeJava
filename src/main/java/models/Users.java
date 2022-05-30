@@ -1,5 +1,7 @@
 package models;
 
+import java.util.Objects;
+
 public class Users
 {
     private int u_id;
@@ -76,5 +78,18 @@ public class Users
     public void setProfile_pic(String profile_pic)
     {
         this.profile_pic = profile_pic;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Users users = (Users) o;
+        return u_id == users.u_id && wins == users.wins && losses == users.losses && Objects.equals(username, users.username) && Objects.equals(password, users.password) && Objects.equals(profile_pic, users.profile_pic);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(u_id, username, password, wins, losses, profile_pic);
     }
 }
