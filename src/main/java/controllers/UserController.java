@@ -12,7 +12,7 @@ import java.util.List;
 public class UserController
 {
     private UserService us;
-    private Gson gson = new Gson();
+    private final Gson gson = new Gson();
 
     public UserController(UserService us)
     {
@@ -38,6 +38,7 @@ public class UserController
         Users u = gson.fromJson(context.body(), Users.class);
         u = us.regUser(u);
         context.result(gson.toJson(u));
+        context.status(201);
     };
 
     public Handler updateWins = (context) ->
@@ -52,6 +53,14 @@ public class UserController
         Users u =gson.fromJson(context.body(), Users.class);
         u = us.updateLosses(u);
         context.result(gson.toJson(u));
+    };
+
+    public Handler deleteUser = (context) ->
+    {
+        int id = Integer.parseInt(context.pathParam("id"));
+        Users u = us.deleteUser(id);
+        context.result(gson.toJson(u));
+        context.status(204);
     };
 
     public void anotherHandle(Context ctx)

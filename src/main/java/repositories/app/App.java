@@ -42,6 +42,7 @@ public class App
         app.post("/users", uc.regUser);
         app.put("/users/wins", uc.updateWins);
         app.put("/users/lose", uc.updateLosses);
+        app.delete("/users/:id", uc.deleteUser);
 
 
 //        app.routes(() ->

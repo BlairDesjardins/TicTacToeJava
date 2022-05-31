@@ -5,13 +5,15 @@ import java.util.List;
 
 public interface UserService
 {
-    public Users getUser(int id);
+    Users getUser(int id);
 
-    public List<Users> getAllUsers();
+    List<Users> getAllUsers();
 
-    public Users regUser(Users u);
+    Users regUser(Users u);
 
-    public Users updateWins(Users u);
+    Users updateWins(Users u);
 
-    public Users updateLosses(Users u);
+    Users updateLosses(Users u);
+
+    Users deleteUser(int id);
 }

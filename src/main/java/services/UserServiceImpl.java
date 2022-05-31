@@ -40,4 +40,9 @@ public class UserServiceImpl implements UserService
     public Users updateLosses(Users u) {
         return ur.updateLosses(u);
     }
+
+    @Override
+    public Users deleteUser(int id) {
+        return ur.deleteUser(id);
+    }
 }
